@@ -3,7 +3,7 @@
 
 **Última actualización:** Febrero 2026  
 **Autor:** Pablo Tirado  
-**Repositorio:** https://github.com/pepeteg/responsible-ai-portfolio  
+**Repositorio:** https://github.com/pepeteg/responsible-ai-portfolio-pptg
 **Portafolio completo en Notion:** https://daily-fish-b51.notion.site/Portafolio-Responsible-AI-Pablo-Tirado-2e2d9934f4878046aa4ecf94a58071f6
 
 Este glosario recoge los términos más importantes que he estudiado y aplicado en mi serie de proyectos Responsible AI. Incluye definiciones claras, referencias al EU AI Act y ejemplos prácticos de mis partes 1-5.
