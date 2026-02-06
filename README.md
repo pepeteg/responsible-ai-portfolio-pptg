@@ -6,7 +6,7 @@ Serie completa de 5 proyectos técnicos sobre ética y gobernanza en IA, basada 
 
 1. **Parte 1: Detección y Mitigación de Bias**  
    Adult Dataset + AIF360 → Bias de género detectado y mitigado (DI 0.36 → 1.00).  
-   [Notebook](project-1-bias-detection/part1-bias-detection.ipynb) | [PDF](project-1-bias-detection/part1-bias-detection.pdf)
+   [Notebook](project-1-bias-detection/Auditoría_de_Sesgos_en_Modelo_Predictivo_con_AIF360_Adult_Dataset.ipynb) | [PDF](project-1-bias-detection/Auditoría de Sesgos en Modelo Predictivo con AIF360 - Adult Dataset)
 
 2. **Parte 2: Trade-off Accuracy vs Fairness**  
    Logistic Regression vs Random Forest + Reweighing → Accuracy 84.6% sin pérdida.  
