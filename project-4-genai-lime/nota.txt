@@ -1,0 +1,1 @@
+Este proyecto de colaba está solo con el código sin el resultado de ejecutarlo porque la parte dinámica de los display(HTML(exp1.as_html())) no se importa correctamente en GitHub.
