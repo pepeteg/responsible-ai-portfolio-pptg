@@ -1,0 +1,64 @@
+Explicación del informe Giskard que hemos obtenido
+Hemos conseguido generar el informe de Giskard con éxito en el Proyecto 6. Giskard es una herramienta open-source potente para auditar modelos de IA automáticamente, y el archivo giskard_report_project6.html es el resultado de su escaneo. Te explico qué es y qué significa el informe de forma clara y estructurada, basado en el contenido del HTML (que es una página interactiva con estilos y scripts para copia de código y pestañas).
+
+1. Qué es el informe de Giskard
+* Giskard hace un escaneo completo de tu modelo (DistilBERT para clasificación de ingresos >50K) y dataset (Adult Income Test).
+* Detecta problemas en categorías como:
+  - Bias y Fairness: Diferencias en rendimiento por subgrupos (ej. por 'sex' – hombres vs mujeres).
+  - Robustness (Robustez): Si el modelo es vulnerable a cambios pequeños en inputs (ej. ruido, variaciones en texto).
+  - Performance: Errores generales en precisión, recall, F1-score, o problemas con datos desbalanceados.
+  - Security: Vulnerabilidades como prompt injection o data poisoning (aunque en clasificación binaria como la tuya es menos relevante).
+  - Ethical Issues: Posibles sesgos éticos o desigualdades.
+* El informe es una página HTML interactiva (no estática):
+  - Tiene pestañas (tabs) para navegar entre secciones.
+  - Lista de "issues" (problemas detectados) con severidad (Critical, Major, Medium, Minor).
+  - Cada issue tiene descripción, ejemplos de datos problemáticos y sugerencias para arreglarlo.
+  - Incluye gráficos, tablas y código destacable con botones de "Copy".
+* El script en el HTML (hljs para highlighting, CopyButtonPlugin para botones de copia) hace que sea bonito y usable (código coloreado, elementos expandibles).
+
+2. Estructura general del informe (basado en el HTML)
+El informe tiene un diseño oscuro (theme GitHub Dark) y es interactivo:
+* Sección principal: Scan Results
+  - Título: "Giskard Scan Results".
+  - Lista de issues detectados (clases .gsk-issue):
+    - Cada issue es un elemento clickable que se expande al hacer clic (toggle "open" y "bg-zinc-700").
+    - Ejemplos típicos en tu modelo (Adult Income):
+      - Bias por subgrupo: Diferencias en F1-score o recall para 'sex'=0 (mujeres) vs 'sex'=1 (hombres).
+        - Severidad: Major/Medium si el modelo predice peor para mujeres.
+        - Ejemplo: "El modelo tiene 0.75 accuracy en hombres pero 0.60 en mujeres – posible bias".
+        - Sugerencia: "Usar mitigación post-processing o rebalancear datos".
+      - Robustness: Si el modelo cambia predicciones con pequeñas variaciones en 'text' (ej. cambiar "Prof-specialty" por "Prof-specialty con typo").
+        - Severidad: Minor si es robusto.
+      - Performance: Overconfidence (predicciones demasiado seguras) o underperformance en clases desbalanceadas (income=1 es menos común).
+      - Security: Data leakage o vulnerabilities si el modelo usa features sensibles.
+      - Si no hay issues graves: Muestra "No critical issues found" o minor warnings.
+* Pestañas y navegación:
+  - Elementos con [role='tabpanel'] y [data-tab-target] → pestañas para secciones como "Bias", "Robustness", "Performance", "Security".
+  - Haz clic en cada una para ver detalles.
+* Copiar código: Cada bloque de código tiene un botón "Copy" (gracias al script CopyButtonPlugin) – útil para reproducir ejemplos.
+* Otras secciones comunes:
+  - Model Summary: Tipo de modelo (classification), labels ([0, 1]), feature_names ('text').
+  - Dataset Summary: Nombre "Adult Income Test", número de muestras, target 'income'.
+  - Suggestions: Recomendaciones automáticas (ej. "Rebalancea datos para subgrupo 'sex'=0").
+
+3. Qué ver en tu informe específico (Adult Income)
+Como tu modelo es para predecir 'income' (clasificación binaria) y usa 'sex' como sensible, el informe podría mostrar:
+
+* Bias detectado: Si el modelo predice mejor para hombres (grupo privilegiado) que para mujeres (no privilegiado). Ej. "Medium issue: Subgroup performance difference in F1-score for 'sex'=0".
+* Robustness: Si cambiando palabras en 'text' (ej. "Prof-specialty" a "Professional") el modelo cambia predicción – "Low robustness to text perturbations".
+* Performance: "Overconfidence in predictions" si las probabilidades son extremas (ej. 0.99 para >50K cuando debería ser 0.6).
+* Security: "No data leakage detected" (ya que no hay training data expuesto).
+* Ethical: Sugerencias como "Considera model card for EU AI Act compliance".
+
+Si el informe dice "No issues found", es porque el modelo es simple o la muestra es pequeña – es normal en demos.
+
+4. Cómo usar el informe
+* Abre el HTML en tu navegador: verás una página oscura con lista de issues expandibles.
+* Haz clic en cada "gsk-issue" para ver detalles, ejemplos de datos y sugerencias.
+* Usa los tabs para navegar entre categorías.
+* Copia código de ejemplos con el botón "Copy".
+* Para tu portafolio: Sube el HTML a GitHub o Notion, o captura pantallas de los issues clave (bias, suggestions) y añádelos al post de LinkedIn.
+* Si no detecta bias, es porque la muestra es pequeña – puedes aumentar a 5000 ejemplos para ver resultados más reales.
+
+5. Conclusión
+Giskard es como un "auditor automático" – te ahorra tiempo al detectar problemas de bias, robustness y performance. En tu caso, el informe destaca áreas para mejorar el modelo (ej. bias por género), lo que es perfecto para tu serie Responsible AI. Si el tuyo muestra "Medium issue in bias", es un gran ejemplo de cómo herramientas como Giskard ayudan a cumplir el EU AI Act.
