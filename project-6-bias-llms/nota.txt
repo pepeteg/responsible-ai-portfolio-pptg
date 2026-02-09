@@ -1,0 +1,1 @@
+Este proyecto de colab está solo con el código sin el resultado de ejecutarlo porque la parte dinámica no se importa correctamente en GitHub.
