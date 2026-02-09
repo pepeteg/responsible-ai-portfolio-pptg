@@ -24,6 +24,10 @@ Serie completa de 5 proyectos técnicos sobre ética y gobernanza en IA, basada 
    Métricas de fairness y mitigación post-processing en Adult Dataset.  
    [Notebook](project-5-fairness-google/fairness-bias-google.ipynb) | [PDF](project-5-fairness-google/fairness-bias-google.pdf)
 
+6. **Proyecto 6: Bias en LLMs**  
+   DistilBERT + Fairlearn + Giskard + Red Team → Métricas, mitigación, frontera eficiente y auditoría.  
+   [Notebook](project-6-bias-llms/project6.ipynb) | [PDF](project-6-bias-llms/project6.pdf) | [Gráfica](project-6-bias-llms/frontera_eficiente.png) | [Informe Giskard](project-6-bias-llms/giskard_report.html)
+
 ## Glosario Ética y Gobernanza IA (EU AI Act)
 [Ver glosario](glosario-eu-ai-act/glosario.md)
 
