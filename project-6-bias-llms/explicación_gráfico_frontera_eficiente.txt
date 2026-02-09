@@ -1,0 +1,43 @@
+Frontera eficiente: Accuracy vs Fairness
+
+Este gráfico muestra el trade-off (compromiso) entre dos cosas importantes:
+
+* Accuracy (precisión del modelo): qué tan bien predice en general.
+* Disparate Impact (medida de fairness/equidad): qué tan igual trata a los grupos (mujeres vs hombres en tu caso).
+
+Estructura del gráfico
+* Eje horizontal (X): Disparate Impact (DI)
+  - Valor ideal: ≈ 1.0 (el modelo trata igual a mujeres y hombres).
+  - Umbral aceptable (línea roja punteada): 0.8 (regla común en regulaciones y auditorías – si está por debajo de 0.8, hay bias significativo).
+* Eje vertical (Y): Accuracy
+  - Cuanto más alto, mejor (el modelo acierta más predicciones).
+* Puntos morados unidos por líneas: Combinaciones posibles al variar el threshold (umbral de decisión del modelo).
+* Cada punto representa un umbral diferente (de 0.1 a 0.9).
+* Línea roja punteada vertical en 0.8: Marca el umbral mínimo aceptable de fairness (DI ≥ 0.8).
+
+¿Qué nos dice el gráfico?
+
+1. La curva baja y sube de forma irregular
+- Empieza en accuracy alta (~0.805) pero con DI muy bajo (~0.2–0.3) → el modelo es preciso, pero muy injusto (favorece mucho a un grupo, probablemente hombres).
+- Al aumentar el threshold para equilibrar, accuracy baja un poco (hasta ~0.780–0.790).
+- Luego sube de nuevo y se estabiliza alrededor de 0.795–0.805 con DI mejor (hacia 0.5–0.6).
+- No llega a DI = 1.0 (equidad perfecta), pero mejora bastante respecto al modelo base.
+
+2. Trade-off visible
+- Para conseguir fairness aceptable (DI ≥ 0.8, línea roja), la accuracy baja un poco (de ~0.805 a ~0.78–0.79).
+- Pero en la zona de DI ~0.5–0.6, mantienes accuracy casi máxima (~0.80) con fairness razonable.
+  → Demuestra que se puede mejorar fairness sin perder casi precisión.
+
+3. Interpretación comercial
+- En aplicaciones reales (crédito, empleo, fraude), las empresas buscan estar en la frontera eficiente: máxima accuracy posible con DI ≥ 0.8 (para evitar demandas o sanciones del EU AI Act).
+- Tu curva muestra que el modelo base es preciso pero injusto.
+- Con mitigación (ajuste de threshold), puedes moverte hacia la derecha (más fairness) con pérdida mínima de accuracy.
+
+
+Conclusión del gráfico
+
+- El modelo base es bueno en precisión pero malo en equidad (DI muy bajo).
+- Al ajustar el threshold por grupo (mitigación post-processing), puedes mejorar mucho la fairness (acercarte a 0.8 o más) con una pérdida muy pequeña de accuracy.
+- Esto es exactamente lo que busca el curso de Google y el EU AI Act: demostrar que se puede tener un modelo justo sin sacrificar rendimiento.
+
+Este gráfico muestra de forma visual el trade-off y el beneficio de la mitigación
